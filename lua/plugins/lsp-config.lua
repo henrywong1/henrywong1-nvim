@@ -17,18 +17,21 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 			local lspconfig = require("lspconfig")
+
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.angularls.setup({
+				filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "angular.html" },
+			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.angularls.setup({
+			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
